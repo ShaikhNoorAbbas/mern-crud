@@ -1,5 +1,5 @@
 import { DeleteFilled, EditFilled, PlusOutlined } from "@ant-design/icons";
-import { Button, Image, Modal, Table } from "antd";
+import { Button, Form, Image, Input, Modal, Table } from "antd";
 export default function App() {
   const columns = [
     {
@@ -102,6 +102,29 @@ export default function App() {
           pagination={{ pageSize: 5, position: ["bottomCenter"] }}
           scroll={{ x: "max-content" }}
         />
+        {/* Modal */}
+        <Modal
+          open={true}
+          footer={null}
+          title={<h1 className="text-xl font-semibold">Registration Form</h1>}
+          width={720}
+        >
+          <Form>
+            <div className="grid md:grid-cols-2 gap-x-2.5">
+              <Form.Item>
+                <Input type="file" size="large" style={{ borderRadius: 0 }} />
+              </Form.Item>
+              <Form.Item>
+                <Input
+                  type="text"
+                  size="large"
+                  placeholder="Enter Value"
+                  style={{ borderRadius: 0 }}
+                />
+              </Form.Item>
+            </div>
+          </Form>
+        </Modal>
       </section>
     </>
   );
