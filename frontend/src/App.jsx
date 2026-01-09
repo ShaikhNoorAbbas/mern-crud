@@ -109,18 +109,17 @@ export default function App() {
           title={<h1 className="text-xl font-semibold">Registration Form</h1>}
           width={720}
         >
-          <Form>
-            <div className="grid md:grid-cols-2 gap-x-2.5">
-              <Form.Item>
+          <Form layout="vertical" className="font-semibold">
+            <div className="mt-5 grid md:grid-cols-2 gap-x-2.5">
+              <Form.Item label="Profile" name="profile">
                 <Input type="file" size="large" style={{ borderRadius: 0 }} />
               </Form.Item>
-              <Form.Item>
-                <Input
-                  type="text"
-                  size="large"
-                  placeholder="Enter Value"
-                  style={{ borderRadius: 0 }}
-                />
+              <Form.Item
+                label="FullName"
+                name="fullname"
+                rules={[{ required: true }]}
+              >
+                <Input type="text" placeholder="Enter FullName" size="large" style={{ borderRadius: 0 }} />
               </Form.Item>
             </div>
           </Form>
