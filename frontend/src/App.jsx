@@ -1,5 +1,5 @@
-import { PlusOutlined } from "@ant-design/icons";
-import { Button, Table } from "antd";
+import { DeleteFilled, EditFilled, PlusOutlined } from "@ant-design/icons";
+import { Button, Image, Modal, Table } from "antd";
 export default function App() {
   const columns = [
     {
@@ -37,6 +37,46 @@ export default function App() {
       key: "address",
       dataIndex: "address",
     },
+    {
+      title: "Action",
+      key: "action",
+      dataIndex: "action",
+      render: () => (
+        <div>
+          <Button
+            className="!text-green-500"
+            icon={<EditFilled />}
+            shape="circle"
+            type="text"
+          />
+          <Button
+            className="!text-rose-500"
+            icon={<DeleteFilled />}
+            shape="circle"
+            type="text"
+          />
+        </div>
+      ),
+    },
+  ];
+  const data = [
+    {
+      profile: (
+        <Image
+          src={
+            "https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+          className="rounded-full"
+          width={40}
+        />
+      ),
+      name: "John",
+      email: "john@gmail.com",
+      gender: "male",
+      dob: "4/12/2026",
+      mobile: "89756786",
+      address: "mumbai",
+    },
   ];
   return (
     <>
@@ -55,7 +95,13 @@ export default function App() {
           />
         </div>
         {/* Adding Table */}
-        <Table className="w-10/12" columns={columns} dataSource={[]} />
+        <Table
+          className="w-10/12 text-center"
+          columns={columns}
+          dataSource={data}
+          pagination={{ pageSize: 5, position: ["bottomCenter"] }}
+          scroll={{ x: "max-content" }}
+        />
       </section>
     </>
   );
