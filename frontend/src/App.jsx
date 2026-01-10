@@ -1,6 +1,8 @@
 import { DeleteFilled, EditFilled, PlusOutlined } from "@ant-design/icons";
-import { Button, Form, Image, Input, Modal, Table } from "antd";
+import { Button, Form, Image, Input, Modal, Select, Table } from "antd";
+import { useState } from "react";
 export default function App() {
+  const [modal, setModal] = useState(false);
   const columns = [
     {
       title: "Profile",
@@ -92,6 +94,7 @@ export default function App() {
             size="large"
             type="text"
             className="!text-black !bg-green-300 hover:!bg-white hover:!scale-112"
+            onClick={() => setModal((prev) => !prev)}
           />
         </div>
         {/* Adding Table */}
@@ -104,24 +107,103 @@ export default function App() {
         />
         {/* Modal */}
         <Modal
-          open={true}
+          open={modal}
+          onCancel={() => setModal(false)}
           footer={null}
           title={<h1 className="text-xl font-semibold">Registration Form</h1>}
           width={720}
         >
           <Form layout="vertical" className="font-semibold">
             <div className="mt-5 grid md:grid-cols-2 gap-x-2.5">
+              {/* Profile */}
               <Form.Item label="Profile" name="profile">
                 <Input type="file" size="large" style={{ borderRadius: 0 }} />
               </Form.Item>
+              {/* FullName */}
               <Form.Item
                 label="FullName"
                 name="fullname"
                 rules={[{ required: true }]}
               >
-                <Input type="text" placeholder="Enter FullName" size="large" style={{ borderRadius: 0 }} />
+                <Input
+                  type="text"
+                  placeholder="Enter FullName"
+                  size="large"
+                  style={{ borderRadius: 0 }}
+                />
+              </Form.Item>
+              {/* Email */}
+              <Form.Item
+                label="Email"
+                name="email"
+                rules={[{ required: true }]}
+              >
+                <Input
+                  type="email"
+                  placeholder="Enter Email"
+                  size="large"
+                  style={{ borderRadius: 0 }}
+                />
+              </Form.Item>
+              {/* mobile */}
+              <Form.Item
+                label="Mobile"
+                name="mobile"
+                rules={[{ required: true }]}
+              >
+                <Input
+                  type="text"
+                  placeholder="Enter Mobile Number"
+                  size="large"
+                  style={{ borderRadius: 0 }}
+                />
+              </Form.Item>
+              {/* DOB */}
+              <Form.Item label="DOB" name="dob" rules={[{ required: true }]}>
+                <Input
+                  type="date"
+                  placeholder="Enter Mobile Number"
+                  size="large"
+                  style={{ borderRadius: 0 }}
+                />
+              </Form.Item>
+              {/* Gender */}
+              <Form.Item
+                label="Gender"
+                name="gender"
+                rules={[{ required: true }]}
+              >
+                <Select
+                  size="large"
+                  style={{ borderRadius: 0 }}
+                  placeholder="select your Gender"
+                >
+                  <Select.Option value="male">Male</Select.Option>
+                  <Select.Option value="female">female</Select.Option>
+                </Select>
               </Form.Item>
             </div>
+            {/* Address */}
+            <Form.Item
+              label="Address"
+              name="address"
+              rules={[{ required: true }]}
+            >
+              <Input.TextArea
+                placeholder="Enter your Address"
+                style={{ borderRadius: 0, resize: "none" }}
+              ></Input.TextArea>
+            </Form.Item>
+            <Form.Item>
+              <Button
+                className="!w-full !font-semibold !text-white !bg-blue-600"
+                size="large"
+                style={{ borderRadius: 0 }}
+                icon={<PlusOutlined />}
+              >
+                Register Now
+              </Button>
+            </Form.Item>
           </Form>
         </Modal>
       </section>
