@@ -1,26 +1,23 @@
 import express from "express";
+import {
+  registerCreate,
+  registerDelete,
+  registerRead,
+  registerUpdate,
+} from "../controllers/registerController.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.status(200).json({
-    message: "GET Request",
-  });
-});
-router.post("/", (req, res) => {
-  res.status(200).json({
-    message: "POST Request",
-  });
-});
-router.put("/", (req, res) => {
-  res.status(200).json({
-    message: "PUT Request",
-  });
-});
-router.delete("/", (req, res) => {
-  res.status(200).json({
-    message: "Delete Request",
-  });
-});
+// Route to get all data
+router.get("/", registerRead);
+
+// Route to post all data
+router.post("/", registerCreate);
+
+// Route to update Data
+router.put("/", registerUpdate);
+
+// router to delete a Data
+router.delete("/", registerDelete);
 
 export default router;

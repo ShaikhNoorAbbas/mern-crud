@@ -6,8 +6,7 @@ const app = express();
 // Allowing to receive JSON
 app.use(express.json());
 
-// using Route
-
+// using Routes for Register
 app.use("/register", registerRouter);
 
 // port
